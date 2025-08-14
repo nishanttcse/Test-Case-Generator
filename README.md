@@ -33,6 +33,7 @@ The AI Test Case Generator is a full-stack application that connects to your Git
 ├── lib/
 │   ├── github-api.ts       # GitHub API integration service
 │   ├── ai-service.ts       # AI service for test generation
+│   ├── ai-actions.ts       # Secure server actions for AI calls
 │   └── utils.ts            # Utility functions
 └── hooks/
     └── use-mobile.tsx      # Mobile detection hook
@@ -73,7 +74,6 @@ The AI Test Case Generator is a full-stack application that connects to your Git
    Create a `.env.local` file in the root directory:
    \`\`\`env
    GEMINI_API_KEY=your_gemini_api_key_here
-   NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here
    \`\`\`
 
 4. **GitHub OAuth Setup** (Optional for enhanced features)
@@ -105,7 +105,7 @@ The AI Test Case Generator is a full-stack application that connects to your Git
 
 ### AI Service Configuration
 
-The application uses Google's Gemini AI for test generation. You can modify the AI service in `lib/ai-service.ts` to:
+The application uses Google's Gemini AI for test generation through secure server actions. You can modify the AI service in `lib/ai-actions.ts` to:
 
 - Adjust generation parameters (temperature, max tokens)
 - Customize prompts for different test types
@@ -119,6 +119,14 @@ GitHub integration is handled through `lib/github-api.ts`. The service supports:
 - File content retrieval
 - Branch creation and file commits
 - Pull request creation
+
+## 🔒 Security
+
+The application implements secure practices:
+
+- **Server-side AI calls**: API keys are never exposed to the client
+- **Secure authentication**: GitHub tokens are handled securely
+- **Environment variables**: Sensitive data is kept server-side only
 
 ## 🎨 UI/UX Features
 
@@ -134,7 +142,8 @@ GitHub integration is handled through `lib/github-api.ts`. The service supports:
 
 1. Push your code to GitHub
 2. Connect your repository to Vercel
-3. Add environment variables in Vercel dashboard
+3. Add environment variables in Vercel dashboard:
+   - `GEMINI_API_KEY`: Your Gemini API key
 4. Deploy automatically on every push
 
 ### Other Platforms
