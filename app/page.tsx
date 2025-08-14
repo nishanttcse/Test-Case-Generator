@@ -8,7 +8,7 @@ import { GitHubAuth } from "@/components/github-auth"
 import { RepositorySelector } from "@/components/repository-selector"
 import { FileBrowser } from "@/components/file-browser"
 import { GitHubAPI, getFileLanguage, isTestableFile } from "@/lib/github-api"
-import { Github, FileCode, TestTube, GitPullRequest, ArrowLeft } from "lucide-react"
+import { Github, FileCode, TestTube, GitPullRequest, ArrowLeft, Sparkles, Zap, Shield } from "lucide-react"
 import { TestGeneration } from "@/components/test-generation"
 import { TestCaseManager } from "@/components/test-case-manager"
 import { PRCreator } from "@/components/pr-creator"
@@ -177,141 +177,207 @@ export default function HomePage() {
 
   if (appState === "landing") {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
-        {/* Header */}
-        <header className="border-b bg-white/80 backdrop-blur-sm dark:bg-slate-900/80">
-          <div className="container mx-auto px-4 py-4">
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900">
+        <header className="border-b border-white/20 bg-gradient-to-r from-white/90 to-indigo-50/90 backdrop-blur-xl dark:from-slate-900/90 dark:to-indigo-900/90 shadow-lg">
+          <div className="container mx-auto px-4 py-6">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 bg-primary rounded-lg">
-                  <TestTube className="w-6 h-6 text-primary-foreground" />
+              <div className="flex items-center gap-4">
+                <div className="relative">
+                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl shadow-lg">
+                    <TestTube className="w-7 h-7 text-white" />
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full animate-pulse" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-foreground">TestGen AI</h1>
-                  <p className="text-sm text-muted-foreground">Intelligent Test Case Generator</p>
+                  <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                    TestGen AI
+                  </h1>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">
+                    Intelligent Test Case Generator
+                  </p>
                 </div>
               </div>
-              <Badge variant="secondary" className="font-medium">
+              <Badge
+                variant="secondary"
+                className="font-semibold bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 border-indigo-200 px-4 py-2"
+              >
+                <Sparkles className="w-4 h-4 mr-2" />
                 Workik AI Assignment
               </Badge>
             </div>
           </div>
         </header>
 
-        {/* Main Content */}
-        <main className="container mx-auto px-4 py-8">
-          <div className="max-w-4xl mx-auto space-y-8">
-            {/* Welcome Section */}
-            <div className="text-center space-y-4">
-              <h2 className="text-3xl font-bold text-foreground">Generate Test Cases with AI</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Connect your GitHub repository and let AI generate comprehensive test cases for your codebase. Support
-                for React, Python, and more frameworks.
-              </p>
+        <main className="container mx-auto px-4 py-12">
+          <div className="max-w-6xl mx-auto space-y-16">
+            <div className="text-center space-y-8 relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-3xl blur-3xl -z-10" />
+              <div className="space-y-4">
+                <h2 className="text-5xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent leading-tight">
+                  Generate Test Cases with AI
+                </h2>
+                <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                  Connect your GitHub repository and let AI generate comprehensive test cases for your codebase.
+                  <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+                    {" "}
+                    Support for React, Python, and more frameworks.
+                  </span>
+                </p>
+              </div>
+
+              <div className="flex justify-center gap-4 mt-8">
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-slate-800/80 rounded-full shadow-lg backdrop-blur-sm border border-indigo-100 dark:border-indigo-800">
+                  <Zap className="w-4 h-4 text-yellow-500" />
+                  <span className="text-sm font-medium text-slate-700 dark:text-slate-300">AI Powered</span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-slate-800/80 rounded-full shadow-lg backdrop-blur-sm border border-green-100 dark:border-green-800">
+                  <Shield className="w-4 h-4 text-green-500" />
+                  <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Secure</span>
+                </div>
+                <div className="flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-slate-800/80 rounded-full shadow-lg backdrop-blur-sm border border-purple-100 dark:border-purple-800">
+                  <Sparkles className="w-4 h-4 text-purple-500" />
+                  <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Smart</span>
+                </div>
+              </div>
             </div>
 
-            {/* GitHub Connection Card */}
-            <Card className="border-2 border-dashed border-muted-foreground/20 hover:border-primary/50 transition-colors">
-              <CardHeader className="text-center">
-                <div className="flex justify-center mb-4">
-                  <div className="flex items-center justify-center w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-full">
-                    <Github className="w-8 h-8 text-muted-foreground" />
+            <Card className="border-2 border-dashed border-indigo-200 dark:border-indigo-800 hover:border-indigo-400 dark:hover:border-indigo-600 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/25 bg-gradient-to-br from-white to-indigo-50/50 dark:from-slate-900 dark:to-indigo-900/20 group">
+              <CardHeader className="text-center pb-8">
+                <div className="flex justify-center mb-6">
+                  <div className="relative">
+                    <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-slate-100 to-indigo-100 dark:from-slate-800 dark:to-indigo-900 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                      <Github className="w-10 h-10 text-slate-600 dark:text-slate-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300" />
+                    </div>
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center shadow-lg">
+                      <div className="w-2 h-2 bg-white rounded-full" />
+                    </div>
                   </div>
                 </div>
-                <CardTitle className="text-xl">Connect GitHub Repository</CardTitle>
-                <CardDescription>
-                  Authenticate with GitHub to access your repositories and generate test cases
+                <CardTitle className="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-2">
+                  Connect GitHub Repository
+                </CardTitle>
+                <CardDescription className="text-lg text-slate-600 dark:text-slate-400">
+                  Authenticate with GitHub to access your repositories and generate intelligent test cases
                 </CardDescription>
               </CardHeader>
-              <CardContent className="text-center">
-                <Button size="lg" className="gap-2" onClick={() => setAppState("auth")}>
-                  <Github className="w-5 h-5" />
+              <CardContent className="text-center pb-8">
+                <Button
+                  size="lg"
+                  className="gap-3 px-8 py-4 text-lg font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  onClick={() => setAppState("auth")}
+                >
+                  <Github className="w-6 h-6" />
                   Connect GitHub
                 </Button>
               </CardContent>
             </Card>
 
-            {/* Features Grid */}
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card>
-                <CardHeader>
-                  <div className="flex items-center gap-3">
-                    <FileCode className="w-6 h-6 text-primary" />
-                    <CardTitle className="text-lg">File Browser</CardTitle>
+            <div className="grid md:grid-cols-3 gap-8">
+              <Card className="group hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-2 bg-gradient-to-br from-white to-blue-50/50 dark:from-slate-900 dark:to-blue-900/20 border-blue-100 dark:border-blue-800">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center gap-4 mb-2">
+                    <div className="p-3 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                      <FileCode className="w-6 h-6 text-white" />
+                    </div>
+                    <CardTitle className="text-xl font-bold text-slate-800 dark:text-slate-200">File Browser</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">
-                    Browse and select multiple files from your repository to generate targeted test cases.
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Browse and select multiple files from your repository to generate targeted test cases with
+                    intelligent filtering.
                   </p>
                 </CardContent>
               </Card>
 
-              <Card>
-                <CardHeader>
-                  <div className="flex items-center gap-3">
-                    <TestTube className="w-6 h-6 text-primary" />
-                    <CardTitle className="text-lg">AI Test Generation</CardTitle>
+              <Card className="group hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:-translate-y-2 bg-gradient-to-br from-white to-purple-50/50 dark:from-slate-900 dark:to-purple-900/20 border-purple-100 dark:border-purple-800">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center gap-4 mb-2">
+                    <div className="p-3 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                      <TestTube className="w-6 h-6 text-white" />
+                    </div>
+                    <CardTitle className="text-xl font-bold text-slate-800 dark:text-slate-200">
+                      AI Test Generation
+                    </CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">
-                    Generate comprehensive test cases using AI for React, Python, and other frameworks.
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Generate comprehensive test cases using advanced AI for React, Python, and other popular frameworks.
                   </p>
                 </CardContent>
               </Card>
 
-              <Card>
-                <CardHeader>
-                  <div className="flex items-center gap-3">
-                    <GitPullRequest className="w-6 h-6 text-primary" />
-                    <CardTitle className="text-lg">Auto PR Creation</CardTitle>
+              <Card className="group hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-300 hover:-translate-y-2 bg-gradient-to-br from-white to-green-50/50 dark:from-slate-900 dark:to-green-900/20 border-green-100 dark:border-green-800">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center gap-4 mb-2">
+                    <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                      <GitPullRequest className="w-6 h-6 text-white" />
+                    </div>
+                    <CardTitle className="text-xl font-bold text-slate-800 dark:text-slate-200">
+                      Auto PR Creation
+                    </CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">
-                    Automatically create pull requests with generated test cases directly to your repository.
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Automatically create pull requests with generated test cases directly to your repository with one
+                    click.
                   </p>
                 </CardContent>
               </Card>
             </div>
 
-            {/* Process Steps */}
-            <Card>
-              <CardHeader>
-                <CardTitle>How It Works</CardTitle>
-                <CardDescription>Simple 4-step process to generate and integrate test cases</CardDescription>
+            <Card className="bg-gradient-to-br from-white to-slate-50/50 dark:from-slate-900 dark:to-slate-800/50 border-slate-200 dark:border-slate-700 shadow-xl">
+              <CardHeader className="text-center pb-8">
+                <CardTitle className="text-2xl font-bold text-slate-800 dark:text-slate-200">How It Works</CardTitle>
+                <CardDescription className="text-lg text-slate-600 dark:text-slate-400">
+                  Simple 4-step process to generate and integrate test cases seamlessly
+                </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="grid md:grid-cols-4 gap-4">
-                  <div className="text-center space-y-2">
-                    <div className="flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground rounded-full text-sm font-bold mx-auto">
-                      1
+                <div className="grid md:grid-cols-4 gap-8">
+                  {[
+                    {
+                      step: 1,
+                      title: "Connect GitHub",
+                      desc: "Authenticate and select repository",
+                      color: "from-blue-500 to-cyan-500",
+                    },
+                    {
+                      step: 2,
+                      title: "Select Files",
+                      desc: "Choose files for test generation",
+                      color: "from-purple-500 to-pink-500",
+                    },
+                    {
+                      step: 3,
+                      title: "Generate Tests",
+                      desc: "AI creates test case summaries",
+                      color: "from-green-500 to-emerald-500",
+                    },
+                    {
+                      step: 4,
+                      title: "Create PR",
+                      desc: "Auto-generate pull request",
+                      color: "from-orange-500 to-red-500",
+                    },
+                  ].map((item, index) => (
+                    <div key={index} className="text-center space-y-4 group">
+                      <div className="relative">
+                        <div
+                          className={`flex items-center justify-center w-16 h-16 bg-gradient-to-br ${item.color} text-white rounded-2xl text-xl font-bold mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110`}
+                        >
+                          {item.step}
+                        </div>
+                        {index < 3 && (
+                          <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-slate-300 to-transparent dark:from-slate-600" />
+                        )}
+                      </div>
+                      <h4 className="font-bold text-lg text-slate-800 dark:text-slate-200">{item.title}</h4>
+                      <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{item.desc}</p>
                     </div>
-                    <h4 className="font-medium">Connect GitHub</h4>
-                    <p className="text-sm text-muted-foreground">Authenticate and select repository</p>
-                  </div>
-                  <div className="text-center space-y-2">
-                    <div className="flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground rounded-full text-sm font-bold mx-auto">
-                      2
-                    </div>
-                    <h4 className="font-medium">Select Files</h4>
-                    <p className="text-sm text-muted-foreground">Choose files for test generation</p>
-                  </div>
-                  <div className="text-center space-y-2">
-                    <div className="flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground rounded-full text-sm font-bold mx-auto">
-                      3
-                    </div>
-                    <h4 className="font-medium">Generate Tests</h4>
-                    <p className="text-sm text-muted-foreground">AI creates test case summaries</p>
-                  </div>
-                  <div className="text-center space-y-2">
-                    <div className="flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground rounded-full text-sm font-bold mx-auto">
-                      4
-                    </div>
-                    <h4 className="font-medium">Create PR</h4>
-                    <p className="text-sm text-muted-foreground">Auto-generate pull request</p>
-                  </div>
+                  ))}
                 </div>
               </CardContent>
             </Card>
@@ -322,27 +388,43 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
-      <header className="border-b bg-white/80 backdrop-blur-sm dark:bg-slate-900/80">
-        <div className="container mx-auto px-4 py-4">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900">
+      <header className="border-b border-white/20 bg-gradient-to-r from-white/90 to-indigo-50/90 backdrop-blur-xl dark:from-slate-900/90 dark:to-indigo-900/90 shadow-lg">
+        <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               {appState !== "landing" && (
-                <Button variant="ghost" size="sm" onClick={handleBack}>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleBack}
+                  className="hover:bg-indigo-100 dark:hover:bg-indigo-900/50"
+                >
                   <ArrowLeft className="w-4 h-4" />
                 </Button>
               )}
-              <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 bg-primary rounded-lg">
-                  <TestTube className="w-6 h-6 text-primary-foreground" />
+              <div className="flex items-center gap-4">
+                <div className="relative">
+                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl shadow-lg">
+                    <TestTube className="w-7 h-7 text-white" />
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full animate-pulse" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-foreground">TestGen AI</h1>
-                  {selectedRepo && <p className="text-sm text-muted-foreground">{selectedRepo.full_name}</p>}
+                  <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                    TestGen AI
+                  </h1>
+                  {selectedRepo && (
+                    <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">{selectedRepo.full_name}</p>
+                  )}
                 </div>
               </div>
             </div>
-            <Badge variant="secondary" className="font-medium">
+            <Badge
+              variant="secondary"
+              className="font-semibold bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 border-indigo-200 px-4 py-2"
+            >
+              <Sparkles className="w-4 h-4 mr-2" />
               Workik AI Assignment
             </Badge>
           </div>
@@ -350,7 +432,7 @@ export default function HomePage() {
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {appState === "auth" && <GitHubAuth onAuthenticated={handleAuthentication} />}
 
           {appState === "repo-select" && githubApi && (
