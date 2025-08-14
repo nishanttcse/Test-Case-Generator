@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { GitHubAuth } from "@/components/github-auth"
 import { RepositorySelector } from "@/components/repository-selector"
 import { FileBrowser } from "@/components/file-browser"
@@ -197,13 +196,6 @@ export default function HomePage() {
                   </p>
                 </div>
               </div>
-              <Badge
-                variant="secondary"
-                className="font-semibold bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 border-indigo-200 px-4 py-2"
-              >
-                <Sparkles className="w-4 h-4 mr-2" />
-                Workik AI Assignment
-              </Badge>
             </div>
           </div>
         </header>
@@ -420,13 +412,6 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <Badge
-              variant="secondary"
-              className="font-semibold bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 border-indigo-200 px-4 py-2"
-            >
-              <Sparkles className="w-4 h-4 mr-2" />
-              Workik AI Assignment
-            </Badge>
           </div>
         </div>
       </header>
